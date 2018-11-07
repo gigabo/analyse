@@ -44,7 +44,7 @@
 		.col-md-3
 			.well: center
 				h1
-					if stats.errors.length && stats.warnings.length
+					if stats.errors && stats.errors.length && stats.warnings && stats.warnings.length
 						a(href="#warnings")
 							= stats.warnings.length
 							|  warnings
@@ -52,12 +52,12 @@
 						a(href="#errors")
 							= stats.errors.length
 							|  errors
-					else if stats.errors.length
+					else if stats.errors && stats.errors.length
 						a(href="#errors")
 							= stats.errors.length
 							br
 							| errors
-					else if stats.warnings.length
+					else if stats.errors && stats.warnings.length
 						a(href="#warnings")
 							= stats.warnings.length
 							br

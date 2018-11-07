@@ -49,6 +49,7 @@ app.stats.modules.forEach(function(module, idx) {
 		var weight = 1 / uniqueReasons.length / uniqueReasons.length;
 		var async = !module.chunks.some(function(chunk) {
 			return (function isInChunks(chunks, checked) {
+				if(!chunks) return false;
 				if(chunks.length === 0) return false;
 				if(chunks.indexOf(chunk) >= 0) return true;
 				chunks = chunks.filter(function(c) {
@@ -56,7 +57,7 @@ app.stats.modules.forEach(function(module, idx) {
 				});
 				if(chunks.length === 0) return false;
 				return chunks.some(function(c) {
-					return isInChunks(app.mapChunks[c].parents, checked.concat(c));
+					return isInChunks((app.mapChunks[c]||{}).parents, checked.concat(c));
 				});
 			}(parentModule.chunks, []));
 		});

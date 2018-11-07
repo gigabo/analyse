@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 		"webpack-dev-server": {
 			development: {
 				contentBase: "dist",
-				port: 8080,
+				port: 8888,
 				keepAlive: true,
 				webpack: merge(require("./webpack.config.js"), {
 					devtool: "eval"
